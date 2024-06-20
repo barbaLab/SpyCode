@@ -1,0 +1,19 @@
+root = 'K:\valentina\experiments\02_mice\02_miceFromMichela_newAnalysis\DIV18-20';
+[folder, bytes, folderNames] = dirr(root,'name','.*_PeakDetectionMAT');
+pkdFolder = char(folderNames');
+for ii = 1:size(pkdFolder,1)
+    [curExpFolder,curpkdFolderName] = fileparts(pkdFolder(ii,:));
+    mkdir(curExpFolder,[curpkdFolderName(1:5),'aVaAnalysis'])
+    resFolder = [curExpFolder,filesep,[curpkdFolderName(1:5),'aVaAnalysis']];
+    folder = dir(pkdFolder(ii,:));
+    phase = {folder.name}; phaseNames = char(phase(3:end));
+    for jj = 1:size(phaseNames,1)
+        mkdir(resFolder,phaseNames(jj,:))
+        resFolder2 = [resFolder,filesep,phaseNames(jj,:)];
+        mkdir(resFolder2,curpkdFolderName)
+        resFolder3 = [resFolder2,filesep,phaseNames(jj,:)];
+    end
+    
+     
+    
+end
